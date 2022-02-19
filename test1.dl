@@ -1,0 +1,8 @@
+.decl edge(x:number,y:number)
+.input edge
+
+.decl tc(x:number,y:number)
+.output tc
+
+tc(x,y) :- edge(x,y).
+tc(x,y) :- edge(x,z),tc(z,y).
