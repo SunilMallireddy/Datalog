@@ -1,0 +1,25 @@
+.decl assign(x:number, y:number)
+.input assign
+
+.decl memoryAlias(x:number, y:number)
+.input memoryAlias
+
+.decl dereference(x:number, y:number)
+.input dereference
+
+.decl valueAlias(x:number,y:number)
+.output valueAlias
+
+.decl valueFlow(x:number, y:number)
+.output valueFlow
+
+valueFlow(y,x) :- assign(y,x).
+valueFlow(x,y) :- asssign(x,z),memoryAlias(z,y).
+valueFlow(x,y) :- valueFlow(x,z), valueFlow(z,y).
+memoryAlias(x,w) :- dereference(y,x),valueAlias(y,z),dereference(z,w).
+valueAlias(x,y) :- valueFlow(z,x), valueFlow(z,y).
+valueAlias(x,y) :- valueFlow(z,x), memoryAlias(z,w),valueFlow(w,y).
+valueFlow(x,x) :- assign(x,y).
+valueFlow(x,x) :- assign(y,x).
+memoryAlias(x,x) :- assign(y,x).
+memoryAlias(x,x) :- assig(x,y).

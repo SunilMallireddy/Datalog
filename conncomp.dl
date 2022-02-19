@@ -1,0 +1,19 @@
+.decl arc(x:number, y:number)
+.input arc
+
+.decl cc3(x:number, y:number)
+.ouput cc3
+
+cc3(x, MIN(x)) :- arc(x,_).
+cc3(y,MIN(z)) :- cc3(x,z),arc(x,y).
+
+.decl cc2(x:number, y:number)
+.ouput cc2
+
+cc2(x, MIN(y)):- cc3(x,y)
+
+.decl cc(x:number)
+.output cc
+
+cc(x) :- cc2(_,x).
+

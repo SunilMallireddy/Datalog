@@ -1,0 +1,13 @@
+.decl id(x:number)
+.input id
+
+.decl arc(x:number,y:number)
+.input arc
+
+.decl reach(y:number)
+.output reach
+
+reach(y) :- id(y).
+reach(y) :- reach(x),arc(x,y).
+
+

@@ -1,0 +1,13 @@
+.decl id(x:number)
+.input id
+
+.decl sssp2(x:number, y:number)
+.output sssp2
+
+.decl sssp(x:number, y:number)
+.output sssp
+
+sssp2(y, MIN(0)):- id(y).
+sssp2(y, MIN(d1+d2)) :- sssp2(x,d1),arc(x,y,d2).
+sssp(x,MIN(d)):- sssp2(x,d).
+

@@ -1,0 +1,11 @@
+.decl nullEdge(x:number, y:number).
+.input nullEdge
+
+.decl arc(x:number, y:number)
+.input arc
+
+.decl null(x:number, y:number).
+.output null
+
+null(x,y) :- nullEdge(x,y).
+null(x,y) :- null(x,w),arc(w,y).

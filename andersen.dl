@@ -1,0 +1,19 @@
+.decl addressOf(x:number, y: number)
+.input addressOf
+
+.decl assign(x:number, y:number)
+.input assign
+
+.decl load(x:number, y:number)
+.input load
+
+.decl store(x:number, y:number)
+.input store
+
+.decl pointsTo(x:number, y:number)
+.ouput pointsTo
+
+pointsTo(y,x) :- addressOf(y,x).
+pointsTo(y,x) :- assign(y,z),pointsTo(z,x).
+pointsTo(y,w) :- load(y,x), pointsTo(x,z), pointsTo(z,w).
+pointsTo(z,w) :- store(y,x), pointsTo(y,z), pointsTo(x,w).
